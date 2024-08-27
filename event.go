@@ -1,0 +1,5 @@
+package HaruiBot
+
+func ProcessHandler() {
+	
+}
