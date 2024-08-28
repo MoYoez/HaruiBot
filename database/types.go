@@ -17,7 +17,7 @@ type UserModel struct {
 	// but no one sure if @username is the really only one.
 	FullName    string      // User Full name + LastName + FirstName.
 	FromChannel SliceString // what you are active in bot's service.
-	UserPhoto   int64       // userPhoto shown as a file id, no required to save a raw file, get it from Telegram Official.
+	UserPhoto   string      // userPhoto shown as a file id, no required to save a raw file, get it from Telegram Official.
 }
 
 // Scan SLiceString Default Scanner / Receiver.

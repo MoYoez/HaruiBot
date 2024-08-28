@@ -1,6 +1,8 @@
 package handler
 
-import tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+import (
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+)
 
 // HandleSense when receiving telegram update, handle and go on sence service.
 func HandleSense(Handler tgbotapi.Update) (actionMain tgbotapi.Update, EventAction string, Raw any) {
@@ -39,6 +41,7 @@ func HandleSense(Handler tgbotapi.Update) (actionMain tgbotapi.Update, EventActi
 	return Handler, "UnknownEvent", nil
 }
 
+// HandlerModify make this handler work better.
 func HandlerModify(actionMain tgbotapi.Update, EventAction string, Raw any) Updater {
 	return Updater{
 		UpdatedId:   int64(actionMain.UpdateID),

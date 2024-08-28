@@ -6,12 +6,16 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-func (b *HaruiBot.BotInstance) Caller(Config tgbotapi.ChatInfoConfig) (tgbotapi.Chat, error) {
+func GetChat(b *HaruiBot.BotInstance, Config *tgbotapi.ChatInfoConfig) (tgbotapi.ChatFullInfo, error) {
 	getCaller, err := b.Worker.Request(Config)
 	if err != nil {
-		return tgbotapi.Chat{}, err
+		return tgbotapi.ChatFullInfo{}, err
 	}
-	var chat tgbotapi.Chat
+	var chat tgbotapi.ChatFullInfo
 	err = sonic.Unmarshal(getCaller.Result, &chat)
 	return chat, err
+}
+
+func GetFiles(b *HaruiBot.BotInstance, FileConfigID string) (str string, err error) {
+	return b.Worker.GetFileDirectURL(FileConfigID)
 }
